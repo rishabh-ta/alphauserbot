@@ -106,19 +106,18 @@ async def bot_start(event):
             start_msg = f"Hey! 👤{mention},\
                         \nI am {my_mention}'s assistant bot.\
                         \nYou can contact to my master from here.\
-                        \n\nPowered by [Catuserbot](https://t.me/catuserbot)"
+                        \n\nPowered by [ᴮᴮAlpha×͜×](https://t.me/useless_group_xd)"
         buttons = [
             (
-                Button.url("Repo", "https://github.com/TgCatUB/catuserbot"),
+                Button.url("Repo", "https://telegra.ph/file/d29c58ced5067cc20315b.jpg"),
                 Button.url(
                     "Deploy",
-                    "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack&template=https%3A%2F%2Fgithub.com%2FMr-confused%2Fcatpack",
+                    "https://telegra.ph/file/d29c58ced5067cc20315b.jpg",
                 ),
             )
         ]
     else:
-        start_msg = "Hey Master!\
-            \nHow can i help you ?"
+        start_msg = "𝐇𝐞𝐲 𝐌𝐚𝐬𝐭𝐞𝐫!\ \n 𝐇𝐨𝐰 𝐜𝐚𝐧 𝐢 𝐡𝐞𝐥𝐩 𝐲𝐨𝐮🙂 \n H𝐚𝐡𝐚 𝐰𝐞𝐫𝐞 𝐲𝐨𝐮 𝐚𝐛𝐥𝐞 𝐭𝐨 𝐢𝐦𝐩𝐫𝐞𝐬𝐬 𝐓𝐚𝐧𝐢𝐬𝐡𝐚 🌸🌸 🆃🅾🅳🅰🆈?"
         buttons = None
     try:
         await event.client.send_message(
@@ -180,7 +179,7 @@ async def bot_pms(event):  # sourcery no-metrics
                         user_id, event.text, reply_to=reply_msg, link_preview=False
                     )
             except UserIsBlockedError:
-                return await event.reply("𝗧𝗵𝗶𝘀 𝗯𝗼𝘁 𝘄𝗮𝘀 𝗯𝗹𝗼𝗰𝗸𝗲𝗱 𝗯𝘆 𝘁𝗵𝗲 𝘂𝘀𝗲𝗿. ❌")
+                return await event.reply("𝐓𝐡𝐢𝐬 𝐛𝐨𝐭 𝐰𝐚𝐬 𝐛𝐥𝐨𝐜𝐤𝐞𝐝 𝐛𝐲 𝐭𝐡𝐢𝐬 𝐜𝐡𝐮𝐭𝐢𝐲𝐚. ❌")
             except Exception as e:
                 return await event.reply(f"**Error:**\n`{e}`")
             try:
@@ -205,10 +204,12 @@ async def bot_pms_edit(event):  # sourcery no-metrics
         users = get_user_reply(event.id)
         if users is None:
             return
-        if reply_msg := next(
-            (user.message_id for user in users if user.chat_id == str(chat.id)),
-            None,
-        ):
+        reply_msg = None
+        for user in users:
+            if user.chat_id == str(chat.id):
+                reply_msg = user.message_id
+                break
+        if reply_msg:
             await event.client.send_message(
                 Config.OWNER_ID,
                 f"⬆️ **This message was edited by the user** {_format.mentionuser(get_display_name(chat) , chat.id)} as :",
@@ -265,15 +266,11 @@ async def handler(event):
                 except Exception as e:
                     LOGS.error(str(e))
         if users_1 is not None:
-            reply_msg = next(
-                (
-                    user.message_id
-                    for user in users_1
-                    if user.chat_id != Config.OWNER_ID
-                ),
-                None,
-            )
-
+            reply_msg = None
+            for user in users_1:
+                if user.chat_id != Config.OWNER_ID:
+                    reply_msg = user.message_id
+                    break
             try:
                 if reply_msg:
                     users = get_user_id(reply_msg)
@@ -299,13 +296,13 @@ async def bot_start(event):
         return await event.reply("Reply to a message to get message info")
     info_msg = await event.client.send_message(
         event.chat_id,
-        "`🔎 Searching for this user in my database ...`",
+        "`🔎 Searching for this RanDi Ka BaccHa in my database ...`",
         reply_to=reply_to,
     )
     users = get_user_id(reply_to)
     if users is None:
         return await info_msg.edit(
-            "**ERROR:** \n`Sorry !, Can't Find this user in my database :(`"
+            "**ERROR:** \n`Sorry !, Can't Find this MadarChoD in my database :(`"
         )
     for usr in users:
         user_id = int(usr.chat_id)
@@ -313,7 +310,7 @@ async def bot_start(event):
         break
     if user_id is None:
         return await info_msg.edit(
-            "**ERROR:** \n`Sorry !, Can't Find this user in my database :(`"
+            "**ERROR:** \n`Sorry !, Can't Find this MadarChoD in my database :(`"
         )
     uinfo = f"This message was sent by 👤 {_format.mentionuser(user_name , user_id)}\
             \n**First Name:** {user_name}\
