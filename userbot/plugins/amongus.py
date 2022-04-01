@@ -20,13 +20,11 @@ plugin_category = "extra"
 
 
 async def amongus_gen(text: str, clr: int) -> str:
-    url = (
-        "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/Amongus/"
-    )
+    url = "https://github.com/sandy1709/CatUserbot-Resources/raw/master/Resources/Amongus/"
     font = ImageFont.truetype(
         BytesIO(
             get(
-                "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/fonts/bold.ttf"
+                "https://github.com/sandy1709/CatUserbot-Resources/raw/master/Resources/fonts/bold.ttf"
             ).content
         ),
         60,
@@ -55,10 +53,10 @@ async def amongus_gen(text: str, clr: int) -> str:
 
 async def get_imposter_img(text: str) -> str:
     background = get(
-        f"https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
+        f"https://github.com/sandy1709/CatUserbot-Resources/raw/master/Resources/imposter/impostor{randint(1,22)}.png"
     ).content
     font = get(
-        "https://github.com/TgCatUB/CatUserbot-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
+        "https://github.com/sandy1709/CatUserbot-Resources/raw/master/Resources/fonts/roboto_regular.ttf"
     ).content
     font = BytesIO(font)
     font = ImageFont.truetype(font, 30)
@@ -117,7 +115,7 @@ async def sayliecmd(event):
     try:
         clr = clr[0]
         clr = clr.replace("-c", "")
-        text = text.replace(f"-c{clr}", "")
+        text = text.replace("-c" + clr, "")
         clr = int(clr)
         if clr > 12 or clr < 1:
             clr = randint(1, 12)
