@@ -45,7 +45,7 @@ async def amireallyalive(event):
     ms = (end - start).microseconds / 1000
     _, check_sgnirts = check_data_base_heal_th()
     EMOJI = gvarstatus("ALIVE_EMOJI") or "✧✧"
-    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ MY BOT IS RUNNING SUCCESSFULLY ✮**"
+    ALIVE_TEXT = gvarstatus("ALIVE_TEXT") or "**✮ MY ALPHAUSERBOT☠️ IS RUNNING SUCCESSFULLY ✮**"
     CAT_IMG = gvarstatus("ALIVE_PIC")
     cat_caption = gvarstatus("ALIVE_TEMPLATE") or temp
     caption = cat_caption.format(
@@ -79,13 +79,13 @@ async def amireallyalive(event):
         )
 
 
-temp = """{ALIVE_TEXT}
-**{EMOJI} Master:** {mention}
-**{EMOJI} Uptime :** `{uptime}`
-**{EMOJI} Telethon Version :** `{telever}`
-**{EMOJI} Catuserbot Version :** `{catver}`
-**{EMOJI} Python Version :** `{pyver}`
-**{EMOJI} Database :** `{dbhealth}`"""
+temp = "{ALIVE_TEXT}\n\n\
+**{EMOJI} Master : {mention}**\n\
+**{EMOJI} Uptime :** `{uptime}`\n\
+**{EMOJI} Telethon version :** `{telever}`\n\
+**{EMOJI} AlphaUserBot Version :** `{catver}`\n\
+**{EMOJI} Python Version :** `{pyver}`\n\
+**{EMOJI} Database :** `{dbhealth}`\n"
 
 
 @catub.cat_cmd(
@@ -104,9 +104,9 @@ async def amireallyalive(event):
     reply_to_id = await reply_id(event)
     EMOJI = gvarstatus("ALIVE_EMOJI") or "✧✧"
 
-    cat_caption = "**Catuserbot is Up and Running**\n"
+    cat_caption = "**AlphaUserBot is Up and Running**\n"
     cat_caption += f"**{EMOJI} Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**{EMOJI} Catuserbot Version :** `{catversion}`\n"
+    cat_caption += f"**{EMOJI} AlphaUserBot Version :** `{catversion}`\n"
     cat_caption += f"**{EMOJI} Python Version :** `{python_version()}\n`"
     cat_caption += f"**{EMOJI} Master:** {mention}\n"
     results = await event.client.inline_query(Config.TG_BOT_USERNAME, cat_caption)
